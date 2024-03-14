@@ -1,0 +1,229 @@
+C:\Users\Lenovo>cd \xampp\mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> USE TI05;
+Database changed
+MariaDB [TI05]> SHOW TABLES;
++----------------+
+| Tables_in_ti05 |
++----------------+
+| jabatan        |
+| pegawai        |
++----------------+
+2 rows in set (0.003 sec)
+
+MariaDB [TI05]> CREATE TABLE pegawai(
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+MariaDB [TI05]> INSERT INTO jabatan VALUES
+    -> ('','Manager'),
+    -> ('','Direktur'),
+    -> ('',;Staff');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 4
+    '> ;
+    '> ;
+    '> "
+    '> ";
+    '> "'
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'Staff');
+;
+;
+"
+";
+"'' at line 1
+MariaDB [TI05]> INSERT INTO jabatan VALUES
+    -> ('','Manager'),
+    -> ('','Direktur'),
+    -> ('','Staff');
+Query OK, 3 rows affected, 3 warnings (0.076 sec)
+Records: 3  Duplicates: 0  Warnings: 3
+
+MariaDB [TI05]> SELECT * FORM jabatan;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FORM jabatan' at line 1
+MariaDB [TI05]> ;
+ERROR: No query specified
+
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+----------+
+| id | nama     |
++----+----------+
+|  2 | Direktur |
+|  1 | Manager  |
+|  3 | Staff    |
++----+----------+
+3 rows in set (0.001 sec)
+
+MariaDB [TI05]> INSERT INTO jabatan VALUES
+    -> ('','Supervisor');
+Query OK, 1 row affected, 1 warning (0.006 sec)
+
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+------------+
+| id | nama       |
++----+------------+
+|  2 | Direktur   |
+|  1 | Manager    |
+|  3 | Staff      |
+|  4 | Supervisor |
++----+------------+
+4 rows in set (0.001 sec)
+
+MariaDB [TI05]>
+MariaDB [TI05]> INSERT INTO pegawai
+    -> (nip, nama, email, tgl_lahir, jabatan_id)
+    -> VALUES
+    -> ('2001','Andi','andi@gmail.com','1997-01-01',1);
+Query OK, 1 row affected (0.031 sec)
+
+MariaDB [TI05]> SELECT * FROM pegawai;
++----+------+------+----------------+------------+------------+
+| id | nip  | nama | email          | tgl_lahir  | jabatan_id |
++----+------+------+----------------+------------+------------+
+|  1 | 2001 | Andi | andi@gmail.com | 1997-01-01 |          1 |
++----+------+------+----------------+------------+------------+
+1 row in set (0.001 sec)
+
+MariaDB [TI05]>
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+------------+
+| id | nama       |
++----+------------+
+|  2 | Direktur   |
+|  1 | Manager    |
+|  3 | Staff      |
+|  4 | Supervisor |
++----+------------+
+4 rows in set (0.001 sec)
+
+MariaDB [TI05]> UPDATE jabatan SET nama =
+    -> ';
+    '> ;
+    '> ;
+    '>
+    '>
+    '> '
+    -> ';
+    '> ''
+    '> '
+    -> ;
+ERROR 1062 (23000): Duplicate entry ';
+;
+;
+
+
+;
+'
+' for key 'nama'
+MariaDB [TI05]> UPDATE jabatan SET nama = 'Kepala Gudang'
+    -> WHERE id = 4;
+Query OK, 1 row affected (0.006 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+---------------+
+| id | nama          |
++----+---------------+
+|  2 | Direktur      |
+|  4 | Kepala Gudang |
+|  1 | Manager       |
+|  3 | Staff         |
++----+---------------+
+4 rows in set (0.001 sec)
+
+MariaDB [TI05]> UPDATE pegawai SET nama = 'andi aja'
+    -> WHERE id = 1;
+Query OK, 1 row affected (0.006 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [TI05]> SELECT nama FROM pegawai;
++----------+
+| nama     |
++----------+
+| andi aja |
++----------+
+1 row in set (0.001 sec)
+
+MariaDB [TI05]> DELETE FROM jabatan ;
+Query OK, 4 rows affected (0.006 sec)
+
+MariaDB [TI05]> SELECT * FROM jabatan;
+Empty set (0.001 sec)
+
+MariaDB [TI05]> ;
+ERROR: No query specified
+
+MariaDB [TI05]> SELECT * FROM jabatan WHERE id = 4;
+Empty set (0.002 sec)
+
+MariaDB [TI05]> SELECT * FROM jabatan;
+Empty set (0.001 sec)
+
+MariaDB [TI05]> INSERT INTO jabatan VALUES
+    -> ('','Manager'),
+    -> ('','Direktur'),
+    -> ('','Staff'),
+    -> ('','Supervisor');
+Query OK, 4 rows affected, 4 warnings (0.006 sec)
+Records: 4  Duplicates: 0  Warnings: 4
+
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+------------+
+| id | nama       |
++----+------------+
+|  6 | Direktur   |
+|  5 | Manager    |
+|  7 | Staff      |
+|  8 | Supervisor |
++----+------------+
+4 rows in set (0.001 sec)
+
+MariaDB [TI05]> DELET FROM jabatan WHERE id = 4;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'DELET FROM jabatan WHERE id = 4' at line 1
+MariaDB [TI05]> ;
+ERROR: No query specified
+
+MariaDB [TI05]> DELETE FROM jabatan WHERE id = 4;
+Query OK, 0 rows affected (0.001 sec)
+
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+------------+
+| id | nama       |
++----+------------+
+|  6 | Direktur   |
+|  5 | Manager    |
+|  7 | Staff      |
+|  8 | Supervisor |
++----+------------+
+4 rows in set (0.002 sec)
+
+MariaDB [TI05]> DELETE FROM jabatan WHERE id = 8;
+Query OK, 1 row affected (0.006 sec)
+
+MariaDB [TI05]> SELECT * FROM jabata;
+ERROR 1146 (42S02): Table 'ti05.jabata' doesn't exist
+MariaDB [TI05]> ;
+ERROR: No query specified
+
+MariaDB [TI05]> SELECT * FROM jabatan;
++----+----------+
+| id | nama     |
++----+----------+
+|  6 | Direktur |
+|  5 | Manager  |
+|  7 | Staff    |
++----+----------+
+3 rows in set (0.002 sec)
+
+MariaDB [TI05]>
